@@ -1,0 +1,29 @@
+<% if @assignment %>
+  <h3>Hi There</h3>
+  <div>
+  Hi <strong><%=@student.name%></strong>
+  </div>
+  Today's Word is <%=@assignment.word.word%>
+  It is: <%=@assignment.word.word_type%> and
+  It has following Synonyms <strong><%=@assignment.word.synonyms%></strong> and
+  It has following Antonyms <strong><%=@assignment.word.antonyms%></strong>
+
+  You can use this word like:
+  <div>
+    <strong><%=@assignment.word.usage%></strong>
+  </div>
+
+
+<%= form_with model: @assignment.word do |form| %>
+  <%= form.text_field :word %>
+  <%= form.text_field :word_type %>
+  <%= form.text_field :synonyms %>
+  <%= form.text_field :antonyms %>
+  <%= form.text_field :usage %>
+  <%= form.submit %>
+<% end %>
+
+
+<% else %>
+  <p>There is no assignment for today.</p>
+<% end %>
